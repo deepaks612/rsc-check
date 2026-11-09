@@ -1,0 +1,12 @@
+{
+  "name": "npm-v2-shrinkwrap",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {
+    "": { "name": "npm-v2-shrinkwrap", "dependencies": { "next": "16.4.0" } },
+    "node_modules/next": { "version": "16.4.0" }
+  },
+  "dependencies": {
+    "next": { "version": "16.4.0" }
+  }
+}

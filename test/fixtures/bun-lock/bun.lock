@@ -1,0 +1,20 @@
+{
+  // bun.lock is JSONC
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "bun-lock",
+      "dependencies": {
+        "next": "16.4.0",
+        "waku-like": "1.0.0",
+      },
+    },
+  },
+  "packages": {
+    "@next/env": ["@next/env@16.4.0", "", {}, "sha512-aaa"],
+    "next": ["next@16.4.0", "", { "dependencies": { "@next/env": "16.4.0" }, "bin": { "next": "dist/bin/next" } }, "sha512-bbb"],
+    /* the RSC runtime */
+    "react-server-dom-webpack": ["react-server-dom-webpack@19.3.0", "", {}, "sha512-ccc"],
+    "waku-like": ["waku-like@1.0.0", "", { "dependencies": { "react-server-dom-webpack": "19.3.0" } }, "sha512-ddd"],
+  },
+}

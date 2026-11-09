@@ -1,0 +1,1 @@
+{ "name": "yarn-classic", "dependencies": { "next": "^16.2.0", "rsc-framework": "^3.0.0" } }

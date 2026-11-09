@@ -1,0 +1,1 @@
+{ "name": "yarn-berry", "private": true, "workspaces": ["packages/*"], "packageManager": "yarn@4.5.0" }

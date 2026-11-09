@@ -1,0 +1,57 @@
+'use strict';
+
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const { spawnSync } = require('child_process');
+const path = require('path');
+const { fixture } = require('./helpers');
+const { PROMO } = require('../lib/report');
+
+const BIN = path.join(__dirname, '..', 'bin', 'rsc-check.js');
+const run = (...args) => spawnSync(process.execPath, [BIN, ...args], { encoding: 'utf8', env: { ...process.env, NO_COLOR: '1' } });
+
+test('exit 0 and a clean summary for a clean project', () => {
+  const r = run(fixture('clean'));
+  assert.equal(r.status, 0, r.stderr);
+  assert.match(r.stdout, /No affected versions found in 1 project/);
+  assert.ok(r.stdout.trimEnd().endsWith(PROMO));
+});
+
+test('exit 1 with fix commands for an affected project', () => {
+  const r = run(fixture('npm-v1'));
+  assert.equal(r.status, 1, r.stderr);
+  assert.match(r.stdout, /next@16\.3\.6 → 16\.4\.1/);
+  assert.match(r.stdout, /Fix: npm install next@16\.4\.1/);
+  assert.match(r.stdout, /1 project needs an update/);
+  assert.match(r.stdout, /pulled in by rsc-lib/);
+  assert.equal(r.stdout.split('\n').filter((l) => l.includes('iknowmymac.com')).length, 1);
+  assert.doesNotMatch(r.stdout, /\x1b\[/);
+});
+
+test('--json has no promo line and parses', () => {
+  const r = run(fixture('pnpm-v6'), '--json');
+  assert.equal(r.status, 1, r.stderr);
+  const data = JSON.parse(r.stdout);
+  assert.equal(data.projectsAffected, 1);
+  assert.equal(data.affected[0].packageManager, 'pnpm');
+  assert.deepEqual(data.affected[0].fix.commands, ['pnpm add next@16.4.1']);
+  assert.ok(!r.stdout.includes('iknowmymac.com'));
+});
+
+test('exit 2 on a missing path or a bad option', () => {
+  assert.equal(run('/definitely/not/here').status, 2);
+  assert.equal(run('--nope').status, 2);
+  assert.equal(run('--depth', 'x').status, 2);
+});
+
+test('--help and --version', () => {
+  assert.equal(run('--help').status, 0);
+  assert.match(run('--version').stdout, /^\d+\.\d+\.\d+\n$/);
+});
+
+test('output text follows the copy rules', () => {
+  const r = run(fixture());
+  for (const bad of ['—', '!', ' safe', 'secure', 'protect']) {
+    assert.ok(!r.stdout.toLowerCase().includes(bad), `output contains "${bad}"`);
+  }
+});

@@ -1,0 +1,39 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  next:
+    specifier: 16.3.6
+    version: 16.3.6(react-dom@19.2.0)(react@19.2.0)
+  rsc-kit:
+    specifier: 1.0.0
+    version: 1.0.0
+
+packages:
+
+  /@next/env@16.3.6:
+    resolution: {integrity: sha512-aaa}
+    dev: false
+
+  /next@16.3.6(react-dom@19.2.0)(react@19.2.0):
+    resolution: {integrity: sha512-bbb}
+    engines: {node: '>=20'}
+    hasBin: true
+    peerDependencies:
+      react: ^19.0.0
+    dependencies:
+      '@next/env': 16.3.6
+    dev: false
+
+  /react-server-dom-webpack@19.3.0(react-dom@19.2.0)(react@19.2.0):
+    resolution: {integrity: sha512-ccc}
+    dev: false
+
+  /rsc-kit@1.0.0:
+    resolution: {integrity: sha512-ddd}
+    dependencies:
+      react-server-dom-webpack: 19.3.0(react-dom@19.2.0)(react@19.2.0)
+    dev: false

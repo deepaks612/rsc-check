@@ -1,0 +1,19 @@
+lockfileVersion: 5.4
+
+specifiers:
+  next: 13.4.0
+
+dependencies:
+  next: 13.4.0_biqbaboplfbrettd7655fr4n2y
+
+packages:
+
+  /@next/env/13.4.0:
+    resolution: {integrity: sha512-aaa}
+    dev: false
+
+  /next/13.4.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-bbb}
+    dependencies:
+      '@next/env': 13.4.0
+    dev: false

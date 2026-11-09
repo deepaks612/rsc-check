@@ -1,0 +1,1 @@
+{ "name": "bun-lock", "dependencies": { "next": "16.4.0", "waku-like": "1.0.0" } }
