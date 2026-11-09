@@ -1,0 +1,41 @@
+{
+  "name": "rsc-check",
+  "version": "1.0.0",
+  "description": "Scan your Mac for projects on React Server Components or Next.js versions with critical advisories, and see what to upgrade to. Offline, read-only.",
+  "bin": {
+    "rsc-check": "bin/rsc-check.js"
+  },
+  "main": "lib/scan.js",
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "security",
+    "cve",
+    "rsc",
+    "vulnerability",
+    "react-server-components",
+    "next"
+  ],
+  "author": "iKnowMyMac (https://iknowmymac.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepaks612/rsc-check.git"
+  },
+  "homepage": "https://github.com/deepaks612/rsc-check#readme",
+  "bugs": {
+    "url": "https://github.com/deepaks612/rsc-check/issues"
+  }
+}
