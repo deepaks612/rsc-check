@@ -102,6 +102,8 @@ npx rsc-check . --depth 3
 4. Run `npx rsc-check` again to confirm.
 5. Redeploy.
 
+A longer walkthrough, with the commands for each package manager: [React Server Components vulnerability: check your projects](https://iknowmymac.com/guides/react-server-components-vulnerability-mac?utm_source=rsc-check).
+
 ## License
 
 MIT
