@@ -1,15 +1,17 @@
 # rsc-check
 
+On npm as [`@deepaks612/rsc-check`](https://www.npmjs.com/package/@deepaks612/rsc-check).
+
 Finds JavaScript projects on your Mac that use a React Server Components or Next.js version with a known critical advisory. For each one it tells you the version to upgrade to and the command to run.
 
 ```sh
-npx rsc-check
+npx @deepaks612/rsc-check
 ```
 
 That scans your home folder. To scan one folder:
 
 ```sh
-npx rsc-check ~/code
+npx @deepaks612/rsc-check ~/code
 ```
 
 Node 18 or later. Works on macOS and Linux.
@@ -75,16 +77,16 @@ The full output also lists each advisory with its link.
 ## Options
 
 ```
-npx rsc-check [path]   scan path (default: your home folder)
-  --json               machine-readable output
-  --depth <n>          how many folders deep to look (default: 8)
-  --no-color           plain text
+npx @deepaks612/rsc-check [path]   scan path (default: your home folder)
+  --json                           machine-readable output
+  --depth <n>                      how many folders deep to look (default: 8)
+  --no-color                       plain text
 ```
 
 Exit code 0 means nothing affected, 1 means at least one project is affected, 2 means an error. You can use it in CI:
 
 ```sh
-npx rsc-check . --depth 3
+npx @deepaks612/rsc-check . --depth 3
 ```
 
 ## What it does not do
@@ -99,7 +101,7 @@ npx rsc-check . --depth 3
 1. Go to each project folder in the output.
 2. Run the `Fix:` command. For a direct dependency that is `npm install next@16.4.1`, `pnpm add next@16.4.1`, `yarn add next@16.4.1` or `bun add next@16.4.1`.
 3. If a package is pulled in by something else, update that package. If it has no fixed release yet, pin the fixed version with `overrides` (npm, bun), `pnpm.overrides` (pnpm) or `resolutions` (yarn) in `package.json`, then reinstall.
-4. Run `npx rsc-check` again to confirm.
+4. Run `npx @deepaks612/rsc-check` again to confirm.
 5. Redeploy.
 
 A longer walkthrough, with the commands for each package manager: [React Server Components vulnerability: check your projects](https://iknowmymac.com/guides/react-server-components-vulnerability-mac?utm_source=rsc-check).

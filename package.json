@@ -1,5 +1,5 @@
 {
-  "name": "rsc-check",
+  "name": "@deepaks612/rsc-check",
   "version": "1.0.0",
   "description": "Scan your Mac for projects on React Server Components or Next.js versions with critical advisories, and see what to upgrade to. Offline, read-only.",
   "bin": {
@@ -30,6 +30,9 @@
   ],
   "author": "Deepak Sharma (https://iknowmymac.com)",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/deepaks612/rsc-check.git"

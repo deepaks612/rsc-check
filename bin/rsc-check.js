@@ -13,7 +13,7 @@ affected by GHSA-xqc2-xf4c-x3h3, GHSA-673q-mjm6-r5xr, GHSA-2464-fhr4-w9xw
 and GHSA-p3m5-59mp-jv5r, and says what to upgrade to.
 
 Usage:
-  npx rsc-check [path]     Scan path (default: your home folder)
+  npx @deepaks612/rsc-check [path]   Scan path (default: your home folder)
 
 Options:
   --json         Machine-readable output
