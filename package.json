@@ -1,7 +1,7 @@
 {
   "name": "@deepaks612/rsc-check",
-  "version": "1.0.0",
-  "description": "Scan your Mac for projects on React Server Components or Next.js versions with critical advisories, and see what to upgrade to. Offline, read-only.",
+  "version": "1.1.0",
+  "description": "Scan your Mac for projects on React Server Components or Next.js versions with known advisories, and see what to upgrade to. Offline, read-only.",
   "bin": {
     "rsc-check": "bin/rsc-check.js"
   },

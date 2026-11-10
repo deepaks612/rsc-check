@@ -32,19 +32,19 @@ test('clean and fixed projects have no findings', () => {
 test('npm v1: direct next and indirect react-server-dom-webpack', () => {
   const f = findingsOf(byName['npm-v1']);
   assert.equal(f['next@16.3.6'].dependency, 'direct');
-  assert.equal(f['next@16.3.6'].fixedVersion, '16.4.1');
+  assert.equal(f['next@16.3.6'].fixedVersion, '16.4.5');
   assert.equal(f['react-server-dom-webpack@19.2.0'].dependency, 'indirect');
   assert.deepEqual(f['react-server-dom-webpack@19.2.0'].via, ['rsc-lib']);
   assert.equal(f['react-server-dom-webpack@19.2.0'].fixedVersion, '19.2.9');
-  assert.deepEqual(fixFor(byName['npm-v1']).commands, ['npm install next@16.4.1']);
+  assert.deepEqual(fixFor(byName['npm-v1']).commands, ['npm install next@16.4.5']);
 });
 
 test('npm v3: dev dependency gets -D, nested fixed copy is not reported', () => {
   const p = byName['npm-v3'];
   const f = findingsOf(p);
   assert.deepEqual(Object.keys(f).sort(), ['next@15.3.0', 'react-server-dom-parcel@19.0.8']);
-  assert.equal(f['next@15.3.0'].fixedVersion, '15.5.28');
-  assert.deepEqual(fixFor(p).commands, ['npm install -D next@15.5.28']);
+  assert.equal(f['next@15.3.0'].fixedVersion, '15.5.29');
+  assert.deepEqual(fixFor(p).commands, ['npm install -D next@15.5.29']);
 });
 
 test('version edges: 19.0.8 and 19.3.0 affected, 19.0.9 and 19.3.1 not', () => {
@@ -56,9 +56,9 @@ test('version edges: 19.0.8 and 19.3.0 affected, 19.0.9 and 19.3.1 not', () => {
 });
 
 test('pnpm projects use pnpm commands', () => {
-  assert.deepEqual(fixFor(byName['pnpm-v6']).commands, ['pnpm add next@16.4.1']);
+  assert.deepEqual(fixFor(byName['pnpm-v6']).commands, ['pnpm add next@16.4.5']);
   assert.deepEqual(Object.keys(findingsOf(byName['pnpm-v6'])).sort(), ['next@16.3.6', 'react-server-dom-webpack@19.3.0']);
-  assert.deepEqual(fixFor(byName['pnpm-v5']).commands, ['pnpm add next@15.5.28']);
+  assert.deepEqual(fixFor(byName['pnpm-v5']).commands, ['pnpm add next@15.5.29']);
   assert.match(fixFor(byName['pnpm-v5']).notes.join(' '), /No fix was published for next 13\.x/);
   assert.deepEqual(fixFor(byName['pnpm-v6']).notes.filter((n) => n.includes('major')), []);
 });
@@ -74,15 +74,15 @@ test('yarn classic and berry', () => {
   const classic = findingsOf(byName['yarn-classic']);
   assert.equal(classic['next@16.2.0'].dependency, 'direct');
   assert.deepEqual(classic['react-server-dom-turbopack@19.1.9'].via, ['rsc-framework']);
-  assert.deepEqual(fixFor(byName['yarn-classic']).commands, ['yarn add next@16.4.1']);
+  assert.deepEqual(fixFor(byName['yarn-classic']).commands, ['yarn add next@16.4.5']);
   const berry = findingsOf(byName['yarn-berry']);
   assert.equal(berry['next@15.5.27'].dependency, 'workspace');
-  assert.equal(berry['next@15.5.27'].fixedVersion, '15.5.28');
+  assert.equal(berry['next@15.5.27'].fixedVersion, '15.5.29');
   assert.equal(byName['yarn-berry'].packageManager, 'yarn');
 });
 
 test('bun.lock is read, bun.lockb is skipped but the installed copy is checked', () => {
-  assert.deepEqual(fixFor(byName['bun-lock']).commands, ['bun add next@16.4.1']);
+  assert.deepEqual(fixFor(byName['bun-lock']).commands, ['bun add next@16.4.5']);
   assert.ok(findingsOf(byName['bun-lock'])['react-server-dom-webpack@19.3.0']);
   assert.ok(result.bunLockb.includes(fixture('bun-lockb')));
   const f = findingsOf(byName['bun-lockb']);
@@ -95,7 +95,7 @@ test('installed copy older than the lockfile asks for a reinstall', () => {
   const f = findingsOf(p);
   assert.deepEqual(Object.keys(f), ['next@16.3.6']);
   assert.deepEqual(f['next@16.3.6'].sources, ['installed']);
-  assert.equal(f['next@16.3.6'].lockfileHasFix, '16.4.1');
+  assert.equal(f['next@16.3.6'].lockfileHasFix, '16.4.5');
   assert.deepEqual(fixFor(p).commands, ['npm install']);
 });
 

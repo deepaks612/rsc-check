@@ -1,1 +1,1 @@
-{ "name": "clean", "dependencies": { "next": "16.4.1", "react-server-dom-webpack": "19.2.9" } }
+{ "name": "clean", "dependencies": { "next": "16.4.5", "react-server-dom-webpack": "19.2.9" } }

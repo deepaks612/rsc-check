@@ -2,7 +2,7 @@
 
 On npm as [`@deepaks612/rsc-check`](https://www.npmjs.com/package/@deepaks612/rsc-check).
 
-Finds JavaScript projects on your Mac that use a React Server Components or Next.js version with a known critical advisory. For each one it tells you the version to upgrade to and the command to run.
+Finds JavaScript projects on your Mac that use a React Server Components or Next.js version with a known advisory. For each one it tells you the version to upgrade to and the command to run.
 
 ```sh
 npx @deepaks612/rsc-check
@@ -24,10 +24,17 @@ Node 18 or later. Works on macOS and Linux.
 | `next` | [GHSA-673q-mjm6-r5xr](https://github.com/vercel/next.js/security/advisories/GHSA-673q-mjm6-r5xr) | critical | 16.0.0 to 16.4.0 | 16.4.1 |
 | `next` | [GHSA-2464-fhr4-w9xw](https://github.com/vercel/next.js/security/advisories/GHSA-2464-fhr4-w9xw) | critical | 10.0.0 to 15.5.27, 16.0.0 to 16.4.0 | 15.5.28, 16.4.1 |
 | `next` | [GHSA-p3m5-59mp-jv5r](https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r) | high | 13.0.0 to 15.5.27, 16.0.0 to 16.4.0 | 15.5.28, 16.4.1 |
+| `next` | [GHSA-f3mh-rxg3-f5g2](https://github.com/vercel/next.js/security/advisories/GHSA-f3mh-rxg3-f5g2) | medium | 15.0.0 to 15.5.28, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
+| `next` | [GHSA-7qx7-33qx-rqx2](https://github.com/vercel/next.js/security/advisories/GHSA-7qx7-33qx-rqx2) | medium | 15.0.0 to 15.5.28, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
+| `next` | [GHSA-pc58-hwjq-p385](https://github.com/vercel/next.js/security/advisories/GHSA-pc58-hwjq-p385) | medium | 15.5.28 and earlier, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
+| `next` | [GHSA-rhh4-g77r-r9qj](https://github.com/vercel/next.js/security/advisories/GHSA-rhh4-g77r-r9qj) | medium | 16.0.0 to 16.4.4 | 16.4.5 |
+| `next` | [GHSA-vvgp-ww4w-46vf](https://github.com/vercel/next.js/security/advisories/GHSA-vvgp-ww4w-46vf) | medium | 16.4.0 to 16.4.4 | 16.4.5 |
+| `next` | [GHSA-vc7v-qv4w-wrv8](https://github.com/vercel/next.js/security/advisories/GHSA-vc7v-qv4w-wrv8) | medium | 16.2.0 to 16.4.4 | 16.4.5 |
+| `next` | [GHSA-mfr8-8qww-v76h](https://github.com/vercel/next.js/security/advisories/GHSA-mfr8-8qww-v76h) | medium | 16.3.0 to 16.4.4 | 16.4.5 |
 
 Next.js ships its own copy of the React Server Components code, so a Next.js app is checked through the `next` version.
 
-The `next` ranges come from [OSV](https://osv.dev). The React ranges come from the React advisory. Both were read on 9 November 2026 and are built into the tool.
+The October `next` ranges come from [OSV](https://osv.dev) and the React ranges come from the React advisory. Both were read on 9 November 2026. The seven medium `next` advisories were published on 3 November 2026. They are not in OSV yet, so their ranges come from the [Next.js GitHub advisories](https://github.com/vercel/next.js/security/advisories), read on 11 November 2026. All of it is built into the tool.
 
 ## How it works
 
@@ -46,30 +53,36 @@ It does not walk into `node_modules`, hidden folders such as `.git` or `.Trash`,
 ## Example output
 
 ```
-rsc-check 1.0.0
-Checks for React Server Components and Next.js versions with known advisories (data from 2026-11-09).
+rsc-check 1.1.0
+Checks for React Server Components and Next.js versions with known advisories (data from 2026-11-11).
 Runs offline. Nothing is sent anywhere. Nothing is changed.
 Scanned ~
 
 ~/code/dashboard
-  next@16.3.6 → 16.4.1  (direct dependency; installed in node_modules)
-    critical GHSA-673q-mjm6-r5xr, critical GHSA-2464-fhr4-w9xw, high GHSA-p3m5-59mp-jv5r
+  next@16.3.6 → 16.4.5  (direct dependency; installed in node_modules)
+    critical GHSA-673q-mjm6-r5xr, GHSA-2464-fhr4-w9xw
+    high GHSA-p3m5-59mp-jv5r
+    medium GHSA-f3mh-rxg3-f5g2, GHSA-7qx7-33qx-rqx2, GHSA-pc58-hwjq-p385,
+      GHSA-rhh4-g77r-r9qj, GHSA-vc7v-qv4w-wrv8, GHSA-mfr8-8qww-v76h
   Fix: npm install
-  The lockfile already has next 16.4.1. The installed copy is older, so reinstall.
+  The lockfile already has next 16.4.5. The installed copy is older, so reinstall.
 
 ~/code/shop
-  next@16.3.6 → 16.4.1  (direct dependency; pnpm-lock.yaml)
-    critical GHSA-673q-mjm6-r5xr, critical GHSA-2464-fhr4-w9xw, high GHSA-p3m5-59mp-jv5r
+  next@16.3.6 → 16.4.5  (direct dependency; pnpm-lock.yaml)
+    critical GHSA-673q-mjm6-r5xr, GHSA-2464-fhr4-w9xw
+    high GHSA-p3m5-59mp-jv5r
+    medium GHSA-f3mh-rxg3-f5g2, GHSA-7qx7-33qx-rqx2, GHSA-pc58-hwjq-p385,
+      GHSA-rhh4-g77r-r9qj, GHSA-vc7v-qv4w-wrv8, GHSA-mfr8-8qww-v76h
   react-server-dom-webpack@19.3.0 → 19.3.1  (pulled in by rsc-kit; pnpm-lock.yaml)
     critical GHSA-xqc2-xf4c-x3h3
-  Fix: pnpm add next@16.4.1
+  Fix: pnpm add next@16.4.5
   Pulled in by rsc-kit. Update that package, or pin react-server-dom-webpack to 19.3.1 or later with "pnpm.overrides" in package.json.
 
-2 projects need an update (3 projects scanned in 6 ms).
+2 projects need an update (3 projects scanned in 3 ms).
 
 Upgrade commands, run in each project folder listed above:
   npm   npm install
-  pnpm  pnpm add next@16.4.1
+  pnpm  pnpm add next@16.4.5
 ```
 
 The full output also lists each advisory with its link.
@@ -94,12 +107,12 @@ npx @deepaks612/rsc-check . --depth 3
 - It makes no network requests. The advisory data is in the package. No telemetry.
 - It only reads files. It does not change, install or delete anything.
 - It does not check your deployed servers. Check what you run in production too.
-- It only knows the four advisories above.
+- It only knows the eleven advisories above.
 
 ## How to fix
 
 1. Go to each project folder in the output.
-2. Run the `Fix:` command. For a direct dependency that is `npm install next@16.4.1`, `pnpm add next@16.4.1`, `yarn add next@16.4.1` or `bun add next@16.4.1`.
+2. Run the `Fix:` command. For a direct dependency that is `npm install next@16.4.5`, `pnpm add next@16.4.5`, `yarn add next@16.4.5` or `bun add next@16.4.5`.
 3. If a package is pulled in by something else, update that package. If it has no fixed release yet, pin the fixed version with `overrides` (npm, bun), `pnpm.overrides` (pnpm) or `resolutions` (yarn) in `package.json`, then reinstall.
 4. Run `npx @deepaks612/rsc-check` again to confirm.
 5. Redeploy.

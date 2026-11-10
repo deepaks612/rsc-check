@@ -20,8 +20,8 @@ test('exit 0 and a clean summary for a clean project', () => {
 test('exit 1 with fix commands for an affected project', () => {
   const r = run(fixture('npm-v1'));
   assert.equal(r.status, 1, r.stderr);
-  assert.match(r.stdout, /next@16\.3\.6 → 16\.4\.1/);
-  assert.match(r.stdout, /Fix: npm install next@16\.4\.1/);
+  assert.match(r.stdout, /next@16\.3\.6 → 16\.4\.5/);
+  assert.match(r.stdout, /Fix: npm install next@16\.4\.5/);
   assert.match(r.stdout, /1 project needs an update/);
   assert.match(r.stdout, /pulled in by rsc-lib/);
   assert.equal(r.stdout.split('\n').filter((l) => l.includes('iknowmymac.com')).length, 1);
@@ -34,7 +34,7 @@ test('--json has no promo line and parses', () => {
   const data = JSON.parse(r.stdout);
   assert.equal(data.projectsAffected, 1);
   assert.equal(data.affected[0].packageManager, 'pnpm');
-  assert.deepEqual(data.affected[0].fix.commands, ['pnpm add next@16.4.1']);
+  assert.deepEqual(data.affected[0].fix.commands, ['pnpm add next@16.4.5']);
   assert.ok(!r.stdout.includes('iknowmymac.com'));
 });
 
@@ -54,4 +54,18 @@ test('output text follows the copy rules', () => {
   for (const bad of ['—', '!', ' safe', 'secure', 'protect']) {
     assert.ok(!r.stdout.toLowerCase().includes(bad), `output contains "${bad}"`);
   }
+});
+
+test('medium advisories are listed after critical and high, one line per severity', () => {
+  const r = run(fixture('npm-v1'));
+  const lines = r.stdout.split('\n');
+  const i = lines.findIndex((l) => l.includes('next@16.3.6 → 16.4.5'));
+  const block = [];
+  for (let j = i + 1; /^ {4}/.test(lines[j]); j++) block.push(lines[j]);
+  const sevs = block.filter((l) => /^ {4}\S/.test(l)).map((l) => l.trim().split(' ')[0]);
+  assert.deepEqual(sevs, ['critical', 'high', 'medium']);
+  assert.equal(block[0], '    critical GHSA-673q-mjm6-r5xr, GHSA-2464-fhr4-w9xw');
+  assert.equal(block[1], '    high GHSA-p3m5-59mp-jv5r');
+  assert.equal(block.join(' ').match(/GHSA-/g).length, 9);
+  assert.ok(block.every((l) => l.length <= 80), block.join('\n'));
 });
