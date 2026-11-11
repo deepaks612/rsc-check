@@ -69,3 +69,12 @@ test('medium advisories are listed after critical and high, one line per severit
   assert.equal(block.join(' ').match(/GHSA-/g).length, 9);
   assert.ok(block.every((l) => l.length <= 80), block.join('\n'));
 });
+
+test('the advisory list names CVE numbers, and --json carries them', () => {
+  const r = run(fixture('pnpm-v6'));
+  assert.match(r.stdout, /GHSA-f3mh-rxg3-f5g2 \(CVE-2026-119346\)/);
+  const data = JSON.parse(run(fixture('pnpm-v6'), '--json').stdout);
+  const xqc2 = data.advisoryData.advisories.find((a) => a.id === 'GHSA-xqc2-xf4c-x3h3');
+  assert.equal(xqc2.cve, 'CVE-2026-126187');
+  assert.equal(data.advisoryData.advisories.find((a) => a.id === 'GHSA-673q-mjm6-r5xr').cve, null);
+});

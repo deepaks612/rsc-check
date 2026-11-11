@@ -18,23 +18,25 @@ Node 18 or later. Works on macOS and Linux.
 
 ## What it checks
 
-| Package | Advisory | Severity | Affected | Fixed in |
-| --- | --- | --- | --- | --- |
-| `react-server-dom-webpack`, `react-server-dom-parcel`, `react-server-dom-turbopack` | [GHSA-xqc2-xf4c-x3h3](https://github.com/react/react/security/advisories/GHSA-xqc2-xf4c-x3h3) | critical | 19.0.0 to 19.0.8, 19.1.0 to 19.1.9, 19.2.0 to 19.2.8, 19.3.0 | 19.0.9, 19.1.10, 19.2.9, 19.3.1 |
-| `next` | [GHSA-673q-mjm6-r5xr](https://github.com/vercel/next.js/security/advisories/GHSA-673q-mjm6-r5xr) | critical | 16.0.0 to 16.4.0 | 16.4.1 |
-| `next` | [GHSA-2464-fhr4-w9xw](https://github.com/vercel/next.js/security/advisories/GHSA-2464-fhr4-w9xw) | critical | 10.0.0 to 15.5.27, 16.0.0 to 16.4.0 | 15.5.28, 16.4.1 |
-| `next` | [GHSA-p3m5-59mp-jv5r](https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r) | high | 13.0.0 to 15.5.27, 16.0.0 to 16.4.0 | 15.5.28, 16.4.1 |
-| `next` | [GHSA-f3mh-rxg3-f5g2](https://github.com/vercel/next.js/security/advisories/GHSA-f3mh-rxg3-f5g2) | medium | 15.0.0 to 15.5.28, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
-| `next` | [GHSA-7qx7-33qx-rqx2](https://github.com/vercel/next.js/security/advisories/GHSA-7qx7-33qx-rqx2) | medium | 15.0.0 to 15.5.28, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
-| `next` | [GHSA-pc58-hwjq-p385](https://github.com/vercel/next.js/security/advisories/GHSA-pc58-hwjq-p385) | medium | 15.5.28 and earlier, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
-| `next` | [GHSA-rhh4-g77r-r9qj](https://github.com/vercel/next.js/security/advisories/GHSA-rhh4-g77r-r9qj) | medium | 16.0.0 to 16.4.4 | 16.4.5 |
-| `next` | [GHSA-vvgp-ww4w-46vf](https://github.com/vercel/next.js/security/advisories/GHSA-vvgp-ww4w-46vf) | medium | 16.4.0 to 16.4.4 | 16.4.5 |
-| `next` | [GHSA-vc7v-qv4w-wrv8](https://github.com/vercel/next.js/security/advisories/GHSA-vc7v-qv4w-wrv8) | medium | 16.2.0 to 16.4.4 | 16.4.5 |
-| `next` | [GHSA-mfr8-8qww-v76h](https://github.com/vercel/next.js/security/advisories/GHSA-mfr8-8qww-v76h) | medium | 16.3.0 to 16.4.4 | 16.4.5 |
+| Package | Advisory | CVE | Severity | Affected | Fixed in |
+| --- | --- | --- | --- | --- | --- |
+| `react-server-dom-webpack`, `react-server-dom-parcel`, `react-server-dom-turbopack` | [GHSA-xqc2-xf4c-x3h3](https://github.com/react/react/security/advisories/GHSA-xqc2-xf4c-x3h3) | CVE-2026-126187 | critical | 19.0.0 to 19.0.8, 19.1.0 to 19.1.9, 19.2.0 to 19.2.8, 19.3.0 | 19.0.9, 19.1.10, 19.2.9, 19.3.1 |
+| `next` | [GHSA-673q-mjm6-r5xr](https://github.com/vercel/next.js/security/advisories/GHSA-673q-mjm6-r5xr) | none yet | critical | 16.0.0 to 16.4.0 | 16.4.1 |
+| `next` | [GHSA-2464-fhr4-w9xw](https://github.com/vercel/next.js/security/advisories/GHSA-2464-fhr4-w9xw) | see below | critical | 10.0.0 to 15.5.27, 16.0.0 to 16.4.0 | 15.5.28, 16.4.1 |
+| `next` | [GHSA-p3m5-59mp-jv5r](https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r) | CVE-2026-94482 | high | 13.0.0 to 15.5.27, 16.0.0 to 16.4.0 | 15.5.28, 16.4.1 |
+| `next` | [GHSA-f3mh-rxg3-f5g2](https://github.com/vercel/next.js/security/advisories/GHSA-f3mh-rxg3-f5g2) | CVE-2026-119346 | medium | 15.0.0 to 15.5.28, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
+| `next` | [GHSA-7qx7-33qx-rqx2](https://github.com/vercel/next.js/security/advisories/GHSA-7qx7-33qx-rqx2) | CVE-2026-119347 | medium | 15.0.0 to 15.5.28, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
+| `next` | [GHSA-pc58-hwjq-p385](https://github.com/vercel/next.js/security/advisories/GHSA-pc58-hwjq-p385) | CVE-2026-119348 | medium | 15.5.28 and earlier, 16.0.0 to 16.4.4 | 15.5.29, 16.4.5 |
+| `next` | [GHSA-rhh4-g77r-r9qj](https://github.com/vercel/next.js/security/advisories/GHSA-rhh4-g77r-r9qj) | CVE-2026-119349 | medium | 16.0.0 to 16.4.4 | 16.4.5 |
+| `next` | [GHSA-vvgp-ww4w-46vf](https://github.com/vercel/next.js/security/advisories/GHSA-vvgp-ww4w-46vf) | CVE-2026-119350 | medium | 16.4.0 to 16.4.4 | 16.4.5 |
+| `next` | [GHSA-vc7v-qv4w-wrv8](https://github.com/vercel/next.js/security/advisories/GHSA-vc7v-qv4w-wrv8) | CVE-2026-119351 | medium | 16.2.0 to 16.4.4 | 16.4.5 |
+| `next` | [GHSA-mfr8-8qww-v76h](https://github.com/vercel/next.js/security/advisories/GHSA-mfr8-8qww-v76h) | CVE-2026-119790 | medium | 16.3.0 to 16.4.4 | 16.4.5 |
 
 Next.js ships its own copy of the React Server Components code, so a Next.js app is checked through the `next` version.
 
-The October `next` ranges come from [OSV](https://osv.dev) and the React ranges come from the React advisory. Both were read on 9 November 2026. The seven medium `next` advisories were published on 3 November 2026. They are not in OSV yet, so their ranges come from the [Next.js GitHub advisories](https://github.com/vercel/next.js/security/advisories), read on 11 November 2026. All of it is built into the tool.
+CVE numbers come from OSV or from the advisory itself. GHSA-673q has none yet. For GHSA-2464, GitHub links CVE-2026-96889, which is the underlying librsvg bug rather than the Next.js one, so it is not listed.
+
+The October `next` ranges come from [OSV](https://osv.dev), read on 9 November 2026. The React ranges come from the React advisory and match OSV's record of 10 November 2026. The seven medium `next` advisories were published on 3 November 2026. They are not in OSV yet, so their ranges come from the [Next.js GitHub advisories](https://github.com/vercel/next.js/security/advisories), read on 11 November 2026. All of it is built into the tool.
 
 ## How it works
 
@@ -85,7 +87,7 @@ Upgrade commands, run in each project folder listed above:
   pnpm  pnpm add next@16.4.5
 ```
 
-The full output also lists each advisory with its link.
+The full output also lists each advisory with its CVE number and link.
 
 ## Options
 

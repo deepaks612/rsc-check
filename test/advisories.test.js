@@ -134,3 +134,16 @@ test('unwatched packages and bad versions are ignored', () => {
   assert.equal(check('next', 'workspace:*'), null);
   assert.equal(check('next', ''), null);
 });
+
+test('CVE numbers are attached where one exists for the advisory itself', () => {
+  const byId = Object.fromEntries(ADVISORIES.map((a) => [a.id, a.cve]));
+  assert.equal(byId['GHSA-xqc2-xf4c-x3h3'], 'CVE-2026-126187');
+  assert.equal(byId['GHSA-p3m5-59mp-jv5r'], 'CVE-2026-94482');
+  assert.equal(byId['GHSA-mfr8-8qww-v76h'], 'CVE-2026-119790');
+  // GitHub links GHSA-2464 to Red Hat's librsvg record, not a Next.js one; GHSA-673q has none yet.
+  assert.equal(byId['GHSA-2464-fhr4-w9xw'], undefined);
+  assert.equal(byId['GHSA-673q-mjm6-r5xr'], undefined);
+  for (const a of ADVISORIES) {
+    if (a.cve) assert.match(a.cve, /^CVE-\d{4}-\d{4,}$/);
+  }
+});

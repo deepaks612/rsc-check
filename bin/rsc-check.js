@@ -9,7 +9,7 @@ const { version } = require('../package.json');
 const HELP = `rsc-check ${version}
 
 Finds JavaScript projects with React Server Components or Next.js versions
-affected by GHSA-xqc2-xf4c-x3h3, GHSA-673q-mjm6-r5xr, GHSA-2464-fhr4-w9xw,
+affected by GHSA-xqc2-xf4c-x3h3 (CVE-2026-126187), GHSA-673q-mjm6-r5xr, GHSA-2464-fhr4-w9xw,
 GHSA-p3m5-59mp-jv5r and the seven Next.js advisories of 3 November 2026
 (fixed in 16.4.5 and 15.5.29), and says what to upgrade to.
 Run with --json to see every advisory ID and range.
